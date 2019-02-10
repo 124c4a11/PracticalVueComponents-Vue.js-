@@ -1,22 +1,31 @@
 <template>
   <div>
-    <app-button @click.prevent="onClick">Create account</app-button>
+    <app-label forInput="email">Enter your email address</app-label>
+    <app-input type="email" id="email" placeholder="enter email"/>
+    <app-textarea v-model="form.bio"/>
   </div>
 </template>
 
 <script>
-import AppButton from '@/components/AppButton'
+import AppInput from '@/components/AppInput'
+import AppLabel from '@/components/AppLabel'
+import AppTextarea from '@/components/AppTextarea'
 
 export default {
   name: 'home',
 
   components: {
-    AppButton
+    AppInput,
+    AppLabel,
+    AppTextarea
   },
 
-  methods: {
-    onClick () {
-      console.log('clicked')
+  data () {
+    return {
+      form: {
+        email: '1@1.mail',
+        bio: ''
+      }
     }
   }
 }
