@@ -1,31 +1,25 @@
 <template>
   <div>
-    <app-label forInput="email">Enter your email address</app-label>
-    <app-input type="email" id="email" placeholder="enter email"/>
-    <app-textarea v-model="form.bio"/>
+    <app-button @click.prevent="openModal">Open modal</app-button>
+    <app-sign-in-modal/>
   </div>
 </template>
 
 <script>
-import AppInput from '@/components/AppInput'
-import AppLabel from '@/components/AppLabel'
-import AppTextarea from '@/components/AppTextarea'
+import AppButton from '@/components/AppButton'
+import AppSignInModal from '@/components/modals/AppSignInModal'
 
 export default {
   name: 'home',
 
   components: {
-    AppInput,
-    AppLabel,
-    AppTextarea
+    AppButton,
+    AppSignInModal
   },
 
-  data () {
-    return {
-      form: {
-        email: '1@1.mail',
-        bio: ''
-      }
+  methods: {
+    openModal () {
+      this.$modal.show('signin', { name: 'John' })
     }
   }
 }
